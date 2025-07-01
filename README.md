@@ -7,24 +7,15 @@ This service allows you to easily load one or more template directories and rend
 ```bash
 composer require twig/twig
 ```
-## Instantiatting the Service
-### Single path
+## Instantiating the Service
 ```php
-$twig = new Twig(PROJECT_DIR . '/src/templates');
-```
-
-### Multiple paths
-```php
-$twig = new Twig([
-    PROJECT_DIR. '/src/templates',
-    PROJECT_DIR. '/src/modules/accounts/templates',
-]);
+$twig = new \Artisan\Services\Twig(PROJECT_DIR . '/src/templates');
 ```
 
 ### Configuration options
 You can also pass Twig configuration options as the second argument (e.g., enable caching):
 ```php
-$twig = new Twig($paths, ['cache' => '/tmp/twig_cache']);
+$twig = new Twig($path, ['cache' => '/tmp/twig_cache']);
 ```
 
 ## Render a Template

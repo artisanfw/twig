@@ -3,6 +3,8 @@
 namespace Artisan\Services;
 
 use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 use Twig\Environment;
 
@@ -13,18 +15,18 @@ class Twig
     /**
      * @throws LoaderError
      */
-    public function __construct(string|array $paths, array $options = [])
+    public function __construct(string $path, array $options = [])
     {
         $loader = new FilesystemLoader();
-
-        // Puedes pasar una ruta o un array de rutas
-        foreach ((array)$paths as $path) {
-            $loader->addPath($path);
-        }
-
+        $loader->addPath($path);
         $this->twig = new Environment($loader, $options);
     }
 
+    /**
+     * @throws SyntaxError
+     * @throws RuntimeError
+     * @throws LoaderError
+     */
     public function render(string $template, array $context = []): string
     {
         return $this->twig->render($template, $context);
