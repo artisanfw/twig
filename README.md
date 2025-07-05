@@ -22,6 +22,9 @@ $conf = [
     'functions' => [
         Language::getTwigFunction(), // Optional Twig function from another service
     ]
+];
+
+\Artisan\Services\Twig::load($conf);
 ```
 ## Create a Twig renderer
 ```php
