@@ -4,8 +4,6 @@ namespace Artisan\Services;
 
 use Twig\Environment;
 use Twig\Error\LoaderError;
-use Twig\Error\RuntimeError;
-use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 
 class Twig
@@ -55,11 +53,6 @@ class Twig
         }
     }
 
-    /**
-     * @throws SyntaxError
-     * @throws RuntimeError
-     * @throws LoaderError
-     */
     public function render(string $template, array $context = []): string
     {
         return $this->twig->render($template, $context);
